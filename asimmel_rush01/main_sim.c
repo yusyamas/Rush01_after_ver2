@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_sim.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asimmel <asimmel@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:48:29 by asimmel           #+#    #+#             */
-/*   Updated: 2022/10/15 13:13:18 by asimmel          ###   ########.fr       */
+/*   Updated: 2022/10/15 17:03:38 by asimmel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdlib.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 //char	input[] = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
-
-char	col1[] = {'4', '3', '2', '1', '1', '2', '2', '2', '4', '3', '2', '1', '1', '2', '2', '2'};
-char	col2[] = {'1', '2', '2', '2', '1', '2', '2', '2', '4', '3', '2', '1', '4', '3', '2', '1'};
-char	data[6][16];
-
-
-void ft_firstfill();
-
-
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void	ft_printresult(void)
+void	ft_printresult(char **p)
 {
 	int pi;
 	int pj;
@@ -40,7 +31,7 @@ void	ft_printresult(void)
 	{
 		while (pi <= 5)
 		{
-			ft_putchar(data[pi][pj]);
+			ft_putchar(p[pi][pj]);
 			ft_putchar(' ');
 			pi++;
 		}
@@ -50,46 +41,70 @@ void	ft_printresult(void)
 	}
 }
 
-void	ft_firstfill(void)
+char	**init_data(int x, int y)
 {
-	int fj;
+	char **d;
+	int i;
+	
+	d = (char**)malloc(x * sizeof(char*));
+	i = 0;
+	while (i < x)
+	{
+		d[i] = (char*)malloc(y * sizeof(char));
+		i++;
+	}
+
+	return d;
+}
+
+char	**ft_firstfill(char **f)
+{
 	int fi;
+	int fj;
 	int v;
 
 	fj = 0;
-	fi = 2;
 	v = 1;
-	while (fj <= 11)
+	while (fj <= 15)
 	{
-		if (data[0][fj] == 4)
+		if (f[0][fj] == '4')
 		{
-			while (fi < 5)
+			fi = 2;
+			while (fi <= 5)
 			{
-				data[0][fi] = v;
+				f[fi][fj] = v + '0';
+				fi++;
 				v++;
 			}
 			v = 1;
 		}
-		if (data[0][fj] == '3' && data[1][fj] == '2')
+		if (f[0][fj] == '3' && f[1][fj] == '2')
 		{
-			data[4][fj] = '4';
+			f[4][fj] = '4';
 		}
-		if (data[0][fj] == '3' && data[1][fj] == '1')
+		if (f[0][fj] == '3' && f[1][fj] == '1')
 		{
-			data[5][fj] = '4';
+			f[5][fj] = '4';
 		}
-		if (data[0][fj] == '1' && data[1][fj] == '2')
+		if (f[0][fj] == '1' && f[1][fj] == '2')
 		{
-			data[2][fj] = '4';
-			data[5][fj] = '3';
+			f[2][fj] = '4';
+			f[5][fj] = '3';
 		}
 		fj++;
 	}
-}
 
+	return f;
+}
 
 int main(void)
 {
+	char	col1[] = {'4', '3', '2', '1', '4', '3', '2', '1', '1', '2', '2', '2', '1', '2', '2', '2'};
+	char	col2[] = {'1', '2', '2', '2', '1', '2', '2', '2', '4', '3', '2', '1', '4', '3', '2', '1'};
+
+	char **data = init_data(6, 16);
+	
+	//initialize data contents
 	int i;
 
 	i = 0;
@@ -104,9 +119,10 @@ int main(void)
 		i++;
 	}
 	
-	ft_firstfill();
-	ft_printresult();
-	
+	data = ft_firstfill(data);
+	ft_printresult(data);
+
+	//fill known values
 	
 	
 	
@@ -125,7 +141,6 @@ int main(void)
 		i++;
 	}		
 	*/
-	
 	
 
 	return (0);
