@@ -6,14 +6,13 @@
 /*   By: yusyamas <yuppiy2000@icloud.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 09:10:42 by yusyamas          #+#    #+#             */
-/*   Updated: 2022/10/15 12:56:03 by yusyamas         ###   ########.fr       */
+/*   Updated: 2022/10/15 17:32:58 by yusyamas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+/*
 #include <stdio.h>
-//-------------------------------------------
-//以上は使わない
+*/
 
 void	ft_swap(int *x, int i, int j)
 {
@@ -76,10 +75,12 @@ void	show_data(int *x, int n)
 	}
 }
 
-int main(){
-	int x[4] = {1,2,3,4};
-	do {
-		show_data(x,4);
-	}while (my_next_permutation(x, 4));
-}
+int	main(void)
+{
+	int	x[4] = {1, 2, 3, 4};
 
+	do
+	{
+		show_data(x, 4);
+	} while (my_next_permutation(x, 4));
+}

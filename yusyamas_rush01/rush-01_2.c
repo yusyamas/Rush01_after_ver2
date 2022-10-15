@@ -6,14 +6,14 @@
 /*   By: yusyamas <yuppiy2000@icloud.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 11:16:00 by yusyamas          #+#    #+#             */
-/*   Updated: 2022/10/15 13:36:41 by yusyamas         ###   ########.fr       */
+/*   Updated: 2022/10/15 17:33:49 by yusyamas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		my_next_permutation(int *array, int num);
 
 //条件を満たすなら*is_find = 1, そうでないなら*is_find = 0
-void	check_state(grid)
+void	check_state(int **grid, int *rule, int *is_find)
 {
 }
 
