@@ -6,7 +6,7 @@
 /*   By: yusyamas <yuppiy2000@icloud.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 09:10:42 by yusyamas          #+#    #+#             */
-/*   Updated: 2022/10/15 17:32:58 by yusyamas         ###   ########.fr       */
+/*   Updated: 2022/10/15 14:30:44 by yusyamas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,4 @@ int	my_next_permutation(int *array, int num)
 	ft_swap(array, i - 1, j);
 	ft_rev_int_tab(array + i, num - i);
 	return (1);
-}
-
-//---------------------------------------------------
-//以下は使わない
-void	show_data(int *x, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		printf("%d%c", x[i], (i != 3) ? ' ' : '\n');
-		i += 1;
-	}
-}
-
-int	main(void)
-{
-	int	x[4] = {1, 2, 3, 4};
-
-	do
-	{
-		show_data(x, 4);
-	} while (my_next_permutation(x, 4));
 }

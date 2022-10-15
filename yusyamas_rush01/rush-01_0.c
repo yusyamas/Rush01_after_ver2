@@ -6,7 +6,7 @@
 /*   By: yusyamas <yuppiy2000@icloud.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:53:56 by yusyamas          #+#    #+#             */
-/*   Updated: 2022/10/15 17:31:00 by yusyamas         ###   ########.fr       */
+/*   Updated: 2022/10/15 21:02:22 by yusyamas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	grid_decision_dfs(int **grid, int depth, int *rule, int *is_find);
+void	grid_decision_dfs(int grid[4][4], int depth, int *rule, int *is_find);
 
-void	print_grid(int **grid);
+void	print_grid(int grid[4][4], int n);
 
 int	ft_strlen(char *str)
 {
@@ -31,7 +31,7 @@ int	ft_strlen(char *str)
 	return (length);
 }
 
-void	input_rule(int *rule, int *is_error, char *str, int n)
+int	input_rule(int *rule, char *str, int n)
 {
 	int	i;
 	int	cnt;
@@ -48,49 +48,57 @@ void	input_rule(int *rule, int *is_error, char *str, int n)
 				cnt += 1;
 			}
 			else
-				*is_error = 1;
+				return (1);
 		}
 		else
 		{
 			if (str[i] != ' ')
-				*is_error = 1;
+				return (1);
 		}
 		i += 1;
 	}
+	return (0);
 }
 
-void	augument_check(int *rule, int *is_error, char *str)
+int	augument_check(int *rule, char *str)
 {
 	int	n;
 
 	n = ft_strlen(str);
+	printf("%d\n", n);
 	if (n != 31)
 	{
-		*is_error = 1;
-		return ;
+		return (1);
 	}
-	input_rule(rule, is_error, str, n);
+	return (input_rule(rule, str, n));
 }
 
 int	main(int argc, char **argv)
 {
 	int	grid[4][4];
-	int	is_error;
 	int	rule[16];
 	int	is_find;
 
 	is_find = 0;
+	char c = argc + '0';
+	write(1, &c, 1);
 	if (argc != 2)
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	augument_check(rule, &is_error, argv[1]);
-	if (is_error)
+	if (augument_check(rule, argv[1]))
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
 	grid_decision_dfs(grid, 0, rule, &is_find);
-	print_grid(grid);
+	if (is_find == 1)
+		print_grid(grid, 4);
+	else
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	return (0);
 }
