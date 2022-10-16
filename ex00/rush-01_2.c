@@ -6,7 +6,7 @@
 /*   By: yusyamas <yuppiy2000@icloud.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 11:16:00 by yusyamas          #+#    #+#             */
-/*   Updated: 2022/10/16 10:11:06 by yusyamas         ###   ########.fr       */
+/*   Updated: 2022/10/16 20:21:21 by yusyamas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	count_height_check_vert(int grid[4][4], int *check_flag);
 void	check_building_puzzle(int grid[4][4], int *rule, int *check_flag);
 
 int		my_next_permutation(int *array, int num);
-
-void	print_grid(int grid[4][4], int n);
 
 void	array_init(int *grid, int n)
 {

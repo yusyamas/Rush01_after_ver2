@@ -6,11 +6,9 @@
 /*   By: yusyamas <yuppiy2000@icloud.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:59:46 by yusyamas          #+#    #+#             */
-/*   Updated: 2022/10/15 20:57:58 by yusyamas         ###   ########.fr       */
+/*   Updated: 2022/10/16 20:20:44 by yusyamas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-void	array_init(int *grid, int n);
 
 void	check_array_all_1(int *array, int *check_flag)
 {
